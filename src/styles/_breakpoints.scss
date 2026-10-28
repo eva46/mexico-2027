@@ -1,0 +1,16 @@
+@use 'sass:map';
+
+// DESIGN.md §6：mobile 為預設，只用 min-width
+$breakpoints: (
+  tablet: 768px,
+  desktop: 1024px,
+);
+
+@mixin bp($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error "未知的斷點 `#{$name}`，可用：#{map.keys($breakpoints)}";
+  }
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}

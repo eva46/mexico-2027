@@ -1,0 +1,73 @@
+<header class="head">
+  <h1 class="t-display-xl">TOKENS</h1>
+  <p class="t-heading-md t-zh">設計系統檢查頁（臨時）</p>
+</header>
+
+<section class="section" aria-labelledby="h-color">
+  <h2 id="h-color" class="t-caption-caps">Color</h2>
+  @for (group of colorGroups; track group.title) {
+    <h3 class="t-heading-sm">{{ group.title }}</h3>
+    <ul class="grid">
+      @for (token of group.tokens; track token) {
+        <li class="card">
+          <span class="swatch" [style.background]="'var(' + token + ')'"></span>
+          <code class="name">{{ token }}</code>
+          <span class="value t-caption-caps">{{ values()[token] }}</span>
+        </li>
+      }
+    </ul>
+  }
+</section>
+
+<section class="section" aria-labelledby="h-type">
+  <h2 id="h-type" class="t-caption-caps">Typography</h2>
+  <ul class="stack">
+    @for (t of typeScale; track t.cls) {
+      <li class="card">
+        <code class="name">.{{ t.cls }} · {{ t.token }} = {{ values()[t.token] }}</code>
+        <p [class]="t.cls">{{ t.latin }}</p>
+        <p [class]="t.cls + ' t-zh'">{{ t.zh }}</p>
+      </li>
+    }
+  </ul>
+</section>
+
+<section class="section" aria-labelledby="h-space">
+  <h2 id="h-space" class="t-caption-caps">Spacing &amp; Layout</h2>
+  <ul class="stack card">
+    @for (token of spacing; track token) {
+      <li class="row">
+        <code class="name">{{ token }} = {{ values()[token] }}</code>
+        <span class="bar" [style.width]="'var(' + token + ')'"></span>
+      </li>
+    }
+  </ul>
+</section>
+
+<section class="section" aria-labelledby="h-radius">
+  <h2 id="h-radius" class="t-caption-caps">Radius &amp; Borders</h2>
+  <ul class="grid">
+    @for (token of radius; track token) {
+      <li class="card">
+        <span class="swatch swatch--dark" [style.border-radius]="'var(' + token + ')'"></span>
+        <code class="name">{{ token }} = {{ values()[token] }}</code>
+      </li>
+    }
+    @for (token of borders; track token) {
+      <li class="card">
+        <span class="swatch swatch--plain" [style.border]="'var(' + token + ')'"></span>
+        <code class="name">{{ token }}</code>
+      </li>
+    }
+  </ul>
+</section>
+
+<section class="section" aria-labelledby="h-sample">
+  <h2 id="h-sample" class="t-caption-caps">Status pills</h2>
+  <div class="pills">
+    <span class="pill pill--done t-caption-caps t-zh">已繳清</span>
+    <span class="pill pill--warn t-caption-caps t-zh">未繳</span>
+    <span class="pill pill--partial t-caption-caps t-zh">部分繳交</span>
+    <span class="pill pill--over t-caption-caps t-zh">超繳</span>
+  </div>
+</section>

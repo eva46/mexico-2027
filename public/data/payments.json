@@ -1,0 +1,35 @@
+{
+  "due": 50000,
+  "members": [
+    {
+      "nickname": "阿明",
+      "payments": [
+        { "date": "2026-09-03", "amount": 20000 },
+        { "date": "2026-10-15", "amount": 30000 }
+      ]
+    },
+    {
+      "nickname": "小華",
+      "payments": [
+        { "date": "2026-10-01", "amount": 20000 }
+      ]
+    },
+    {
+      "nickname": "Kiki",
+      "payments": []
+    },
+    {
+      "nickname": "阿傑",
+      "payments": [
+        { "date": "2026-10-20", "amount": 15000 },
+        { "date": "2026-09-12", "amount": 40000 }
+      ]
+    },
+    {
+      "nickname": "小美",
+      "payments": [
+        { "date": "2026-09-30", "amount": 50000 }
+      ]
+    }
+  ]
+}

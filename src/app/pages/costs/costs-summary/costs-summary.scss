@@ -1,0 +1,72 @@
+@use 'breakpoints' as *;
+
+:host {
+  display: block;
+}
+
+// DESIGN.md §7：費用總覽 bg-surface-dark，金額用 display 字型
+.summary {
+  display: grid;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md-plus);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-dark);
+  color: var(--text-inverse);
+  box-shadow: var(--elevation-none);
+
+  @include bp(tablet) {
+    padding: var(--spacing-lg);
+  }
+}
+
+.block {
+  display: grid;
+  gap: var(--spacing-sm);
+  min-width: 0;
+}
+
+.block--total {
+  padding-top: var(--spacing-lg);
+  border-top: var(--border-subtle-inverse);
+}
+
+.amount {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-black);
+  font-synthesis: none;
+  letter-spacing: var(--letter-spacing-display);
+  overflow-wrap: anywhere;
+}
+
+.amount--xl {
+  font-size: var(--font-size-display-xl);
+  line-height: var(--line-height-display-xl);
+}
+
+.amount--md {
+  font-size: var(--font-size-heading-md);
+  line-height: var(--line-height-heading-md);
+}
+
+.amount__unit {
+  font-size: var(--font-size-heading-md);
+  margin-inline-end: var(--spacing-xs);
+}
+
+.amount__of {
+  white-space: nowrap;
+}
+
+.bar {
+  height: var(--spacing-sm);
+  border-radius: var(--radius-full);
+  background: var(--progress-track-inverse);
+  overflow: hidden;
+}
+
+.bar__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--progress-fill-inverse);
+}

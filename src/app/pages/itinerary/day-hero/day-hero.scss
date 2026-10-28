@@ -1,0 +1,43 @@
+@use 'breakpoints' as *;
+
+:host {
+  display: block;
+}
+
+.hero {
+  display: grid;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-accent-green);
+  color: var(--text-inverse);
+
+  @include bp(tablet) {
+    gap: var(--spacing-md-plus);
+    padding: var(--spacing-xl);
+  }
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs) var(--spacing-sm);
+}
+
+.title {
+  display: grid;
+  gap: var(--spacing-sm);
+  margin: 0;
+}
+
+.title__text {
+  overflow-wrap: anywhere;
+}
+
+.stay {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+}

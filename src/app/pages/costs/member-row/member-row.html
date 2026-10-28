@@ -1,0 +1,61 @@
+<article class="row" [class.is-open]="open()">
+  <button
+    class="summary"
+    type="button"
+    [attr.aria-expanded]="open()"
+    [attr.aria-controls]="detailsId()"
+    (click)="toggle()"
+  >
+    <span class="name t-heading-sm t-zh">{{ member().nickname }}</span>
+    <span class="amount">
+      <span class="amount__paid">{{ member().paid | twd }}</span>
+      <span class="amount__due"> / {{ member().due | twd }}</span>
+      @if (member().refund) {
+        <span class="amount__refund t-caption-caps t-zh">將退還 {{ member().refund | twd }}</span>
+      }
+    </span>
+    <span class="bar" aria-hidden="true">
+      <span class="bar__fill" [style.inline-size.%]="member().progress * 100"></span>
+    </span>
+    <span class="status">
+      <span [class]="'pill pill--' + member().status + ' t-caption-caps t-zh'">
+        {{ statusLabel() }}
+      </span>
+    </span>
+    <span class="icon">
+      <span class="visually-hidden">{{ open() ? '收合' : '展開' }}繳費明細</span>
+      <svg
+        class="icon__svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M6 9l6 6 6-6" />
+      </svg>
+    </span>
+  </button>
+
+  <div class="details" [id]="detailsId()" [attr.inert]="open() ? null : ''">
+    <div class="details__inner">
+      @if (member().payments.length) {
+        <ul class="list" [attr.aria-label]="member().nickname + ' 的繳費明細'">
+          @for (payment of member().payments; track $index) {
+            <li class="item">
+              <time class="item__date" [attr.datetime]="payment.date">
+                {{ date(payment.date) }}
+              </time>
+              <span class="item__amount">{{ payment.amount | twd }}</span>
+            </li>
+          }
+        </ul>
+      } @else {
+        <p class="empty t-zh">尚無繳費記錄</p>
+      }
+    </div>
+  </div>
+</article>

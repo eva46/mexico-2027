@@ -1,0 +1,198 @@
+{
+  "startDate": "2027-05-20",
+  "days": [
+    {
+      "day": 1,
+      "date": "2027-05-20",
+      "title": "台北出發・北美轉機",
+      "city": "Taipei → San José del Cabo",
+      "items": [
+        {
+          "time": "",
+          "title": "台灣 (TPE) 出發前往墨西哥 (SJD)",
+          "location": "桃園國際機場",
+          "note": "華航或星宇（美西轉機），買官網連票行李直掛。備妥護照、美簽 (ESTA)、墨西哥簽證與登機文件。餐飲：機上餐點",
+          "mapUrl": ""
+        }
+      ],
+      "stay": "機上過夜"
+    },
+    {
+      "day": 2,
+      "date": "2027-05-21",
+      "title": "抵達 SJD・前往 La Ventana",
+      "city": "La Ventana",
+      "items": [
+        {
+          "time": "",
+          "title": "抵達聖荷西德爾卡沃 (SJD)，會合接駁車前往 La Ventana",
+          "location": "SJD 機場 → La Ventana",
+          "note": "包車接駁（潛店或度假村安排專車，約 2 小時）。領取大件行李，確認潛水裝備完好",
+          "mapUrl": ""
+        },
+        {
+          "time": "",
+          "title": "入住 Aqua Ventana，前往潛店完成報到、出海安全簡報",
+          "location": "Aqua Ventana",
+          "note": "步行／度假村叫車。晚餐自由安排。檢查潛水裝備，提早就寢",
+          "mapUrl": ""
+        }
+      ],
+      "stay": "Aqua Ventana"
+    },
+    {
+      "day": 3,
+      "date": "2027-05-22",
+      "title": "Ocean Safari 1",
+      "city": "La Ventana",
+      "items": [
+        {
+          "time": "",
+          "title": "【Ocean Safari 1】",
+          "location": "Baja Ocean Extreme 潛水",
+          "note": "步行／船（約 6 小時），午餐潛店提供。攜帶 5mm 防寒衣、面鏡、呼吸管、長蛙、浮標",
+          "mapUrl": ""
+        },
+        {
+          "time": "",
+          "title": "自由安排",
+          "location": "La Ventana",
+          "note": "晚餐自由安排",
+          "mapUrl": ""
+        }
+      ],
+      "stay": "Aqua Ventana"
+    },
+    {
+      "day": 4,
+      "date": "2027-05-23",
+      "title": "Ocean Safari 2",
+      "city": "La Ventana",
+      "items": [
+        {
+          "time": "",
+          "title": "【Ocean Safari 2】",
+          "location": "Baja Ocean Extreme 潛水",
+          "note": "步行／船（約 6～7 小時），午餐潛店提供",
+          "mapUrl": ""
+        },
+        {
+          "time": "",
+          "title": "自由安排",
+          "location": "La Ventana",
+          "note": "晚餐自由安排",
+          "mapUrl": ""
+        }
+      ],
+      "stay": "Aqua Ventana"
+    },
+    {
+      "day": 5,
+      "date": "2027-05-24",
+      "title": "Ocean Safari 3",
+      "city": "La Ventana",
+      "items": [
+        {
+          "time": "",
+          "title": "【Ocean Safari 3】",
+          "location": "Baja Ocean Extreme 潛水",
+          "note": "步行／船（約 6 小時），午餐潛店提供",
+          "mapUrl": ""
+        },
+        {
+          "time": "",
+          "title": "自由安排",
+          "location": "La Ventana",
+          "note": "晚餐自由安排",
+          "mapUrl": ""
+        }
+      ],
+      "stay": "Aqua Ventana"
+    },
+    {
+      "day": 6,
+      "date": "2027-05-25",
+      "title": "Ocean Safari 4",
+      "city": "La Ventana",
+      "items": [
+        {
+          "time": "",
+          "title": "【Ocean Safari 4】",
+          "location": "Baja Ocean Extreme 潛水",
+          "note": "步行／船（約 6 小時），午餐潛店提供",
+          "mapUrl": ""
+        },
+        {
+          "time": "",
+          "title": "自由安排",
+          "location": "La Ventana",
+          "note": "晚餐自由安排",
+          "mapUrl": ""
+        }
+      ],
+      "stay": "Aqua Ventana"
+    },
+    {
+      "day": 7,
+      "date": "2027-05-26",
+      "title": "Ocean Safari 5",
+      "city": "La Ventana",
+      "items": [
+        {
+          "time": "",
+          "title": "【Ocean Safari 5】",
+          "location": "Baja Ocean Extreme 潛水",
+          "note": "步行／船（約 6～7 小時），午餐潛店提供。記得給船長與導潛小費",
+          "mapUrl": ""
+        },
+        {
+          "time": "",
+          "title": "自由安排",
+          "location": "La Ventana",
+          "note": "晚餐自由安排。徹底晾乾防寒衣與面鏡長蛙，準備打包",
+          "mapUrl": ""
+        }
+      ],
+      "stay": "Aqua Ventana"
+    },
+    {
+      "day": 8,
+      "date": "2027-05-27",
+      "title": "Todos Santos・SJD 藝術之夜",
+      "city": "Todos Santos → San José del Cabo",
+      "items": [
+        {
+          "time": "",
+          "title": "退房前往 SJD，途中順遊歷史神奇小鎮 Todos Santos (Pueblo Mágico)",
+          "location": "Todos Santos",
+          "note": "包車接駁（La Ventana → Todos Santos → SJD）。有間飯店叫 Hotel California，但不是歌裡那個。午餐自由安排",
+          "mapUrl": ""
+        },
+        {
+          "time": "17:00",
+          "title": "入住 Hotel Colli，逛 SJD 藝術之夜 Art Walk",
+          "location": "San José del Cabo 藝術街區",
+          "note": "週四限定！Art Walk 17～21 點，步行可達。晚餐自由安排。行李秤重確認防超重",
+          "mapUrl": ""
+        }
+      ],
+      "stay": "Hotel Colli"
+    },
+    {
+      "day": 9,
+      "date": "2027-05-28",
+      "title": "SJD 返台",
+      "city": "San José del Cabo",
+      "items": [
+        {
+          "time": "",
+          "title": "前往 SJD 機場辦理登機返台",
+          "location": "SJD 國際機場",
+          "note": "華航或星宇（美西轉機），買官網連票行李直掛。提早 3 小時抵達機場辦理出境手續。餐飲：機上餐點",
+          "mapUrl": ""
+        }
+      ],
+      "stay": "機上過夜"
+    }
+  ]
+}

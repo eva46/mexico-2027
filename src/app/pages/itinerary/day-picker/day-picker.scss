@@ -1,0 +1,112 @@
+@use 'breakpoints' as *;
+
+:host {
+  position: relative;
+  display: block;
+}
+
+// 收合狀態：pill-inactive
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-height: var(--touch-target-min);
+  padding: var(--spacing-sm) var(--spacing-md-plus);
+  border: var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--pill-inactive-bg);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+
+  &:hover .toggle__label {
+    text-decoration: underline;
+    text-underline-offset: var(--spacing-xs);
+  }
+
+  &:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+}
+
+.toggle__icon {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  flex-shrink: 0;
+  transition: transform var(--motion-expand);
+
+  [aria-expanded='true'] > & {
+    transform: rotate(180deg);
+  }
+}
+
+// 展開面板：bg-surface-secondary + border-strong，不用投影
+.panel {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% + var(--spacing-sm));
+  display: grid;
+  gap: var(--spacing-xs);
+  margin: 0;
+  padding: var(--spacing-sm);
+  list-style: none;
+  background: var(--bg-surface-secondary);
+  border: var(--border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--elevation-none);
+}
+
+.option {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--spacing-md);
+  row-gap: var(--spacing-xs);
+  width: 100%;
+  min-height: var(--touch-target-min);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  font: inherit;
+  font-size: var(--font-size-body);
+  text-align: start;
+  cursor: pointer;
+
+  &:hover .option__title {
+    text-decoration: underline;
+    text-underline-offset: var(--spacing-xs);
+  }
+
+  &:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: calc(var(--focus-ring-offset) * -1);
+  }
+
+  &.is-active {
+    background: var(--pill-active-bg);
+    color: var(--pill-active-text);
+
+    .option__title {
+      color: inherit;
+    }
+
+    &:focus-visible {
+      outline: var(--focus-ring-inverse);
+    }
+  }
+}
+
+.option__day {
+  flex-shrink: 0;
+  font-weight: var(--font-weight-bold);
+}
+
+.option__title {
+  min-width: 0;
+  color: var(--text-muted);
+}

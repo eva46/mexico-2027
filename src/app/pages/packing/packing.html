@@ -1,0 +1,23 @@
+<header class="header">
+  <h1 class="title">
+    <span class="t-display-xl">PACKING</span>
+    <span class="title__text t-heading-md t-zh">出發前準備清單</span>
+  </h1>
+  @if (total()) {
+    <p class="progress t-caption-caps t-zh">
+      已準備 {{ checkedCount() }} / {{ total() }} 項・勾選只記錄在本裝置
+    </p>
+  }
+</header>
+
+@if (packing.isLoading()) {
+  <p class="t-zh">載入中…</p>
+} @else if (packing.error()) {
+  <p class="error t-zh" role="alert">物品清單載入失敗，請稍後重新整理頁面。</p>
+} @else {
+  <div class="categories">
+    @for (category of categories(); track category.level) {
+      <app-packing-category [category]="category" />
+    }
+  </div>
+}

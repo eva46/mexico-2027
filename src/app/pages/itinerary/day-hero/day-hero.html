@@ -1,0 +1,19 @@
+<header class="hero">
+  <p class="meta t-caption-caps t-zh">
+    <span>{{ date() }}</span>
+    @if (day().city) {
+      <span aria-hidden="true">·</span>
+      <span>{{ day().city }}</span>
+    }
+  </p>
+  <h1 class="title">
+    <span class="title__day t-display-xl">DAY {{ dayNumber() }}</span>
+    <span class="title__text t-heading-md t-zh">{{ day().title }}</span>
+  </h1>
+  @if (day().stay) {
+    <p class="stay">
+      <span class="t-caption-caps">Stay</span>
+      <span class="t-zh">{{ day().stay }}</span>
+    </p>
+  }
+</header>

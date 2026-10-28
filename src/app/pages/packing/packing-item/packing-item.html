@@ -1,0 +1,82 @@
+<article
+  [class]="'card card--' + level()"
+  [class.is-done]="checked()"
+  [class.is-soon]="due()?.status === 'soon'"
+>
+  <label
+    class="check t-zh"
+    [class.t-heading-md]="level() === 'critical'"
+    [class.t-heading-sm]="level() !== 'critical'"
+  >
+    <span class="check__box">
+      <input
+        class="check__input"
+        type="checkbox"
+        [checked]="checked()"
+        [attr.aria-describedby]="detailsId()"
+        (change)="toggle($event)"
+      />
+      <svg
+        class="check__mark"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M5 12.5l4.5 4.5L19 7.5" />
+      </svg>
+    </span>
+    <span class="check__name">{{ item().name }}</span>
+  </label>
+
+  @if (item().note || due()) {
+    <div class="details" [id]="detailsId()">
+      @if (item().note) {
+        <p class="note t-zh">{{ item().note }}</p>
+      }
+      @if (due(); as d) {
+        <p class="due">
+          <span class="due__date t-caption-caps t-zh">Due {{ d.date }}</span>
+          @switch (d.status) {
+            @case ('done') {
+              <span class="pill pill--done t-caption-caps t-zh">已準備</span>
+            }
+            @case ('overdue') {
+              <span class="pill pill--warn t-caption-caps t-zh">
+                <svg
+                  class="pill__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 3l10 18H2z" />
+                  <path d="M12 10v5" />
+                  <path d="M12 18h.01" />
+                </svg>
+                已過期限
+              </span>
+            }
+            @case ('today') {
+              <span class="pill pill--warn t-caption-caps t-zh">今天截止</span>
+            }
+            @case ('soon') {
+              <span class="pill pill--warn t-caption-caps t-zh">剩 {{ d.days }} 天</span>
+            }
+            @default {
+              <span class="due__left t-caption-caps t-zh">剩 {{ d.days }} 天</span>
+            }
+          }
+        </p>
+      }
+    </div>
+  }
+</article>

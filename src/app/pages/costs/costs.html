@@ -1,0 +1,35 @@
+<div class="layout">
+  <div class="aside">
+    <h1 class="title">
+      <span class="t-display-xl">PAYMENT</span>
+      <span class="title__text t-heading-md t-zh">團費繳交狀況</span>
+    </h1>
+    @if (group(); as g) {
+      <app-costs-summary [group]="g" />
+    }
+  </div>
+
+  <div class="main">
+    @if (payments.isLoading()) {
+      <p class="t-zh">載入中…</p>
+    } @else if (payments.error()) {
+      <p class="error t-zh" role="alert">繳費資料載入失敗，請稍後重新整理頁面。</p>
+    } @else if (group(); as g) {
+      <section aria-labelledby="costs-members-heading">
+        <h2 class="members-title" id="costs-members-heading">
+          <span class="t-caption-caps">Member</span>
+          <span class="t-heading-sm t-zh">成員繳費明細</span>
+        </h2>
+        @if (g.members.length) {
+          <ul class="members">
+            @for (member of g.members; track member.nickname; let i = $index) {
+              <li><app-member-row [member]="member" [index]="i" /></li>
+            }
+          </ul>
+        } @else {
+          <p class="t-zh">目前沒有成員資料。</p>
+        }
+      </section>
+    }
+  </div>
+</div>

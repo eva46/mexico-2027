@@ -1,0 +1,197 @@
+@use 'breakpoints' as *;
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.card {
+  --card-focus-ring: var(--focus-ring);
+
+  display: grid;
+  align-content: start;
+  gap: var(--spacing-sm);
+  height: 100%;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--elevation-none);
+
+  @include bp(tablet) {
+    padding: var(--spacing-md-plus);
+  }
+}
+
+// DESIGN.md §7：三層級色塊
+.card--critical {
+  --card-focus-ring: var(--focus-ring-inverse);
+
+  gap: var(--spacing-md);
+  padding: var(--spacing-md-plus);
+  background: var(--bg-surface-accent-red);
+  color: var(--text-inverse);
+
+  @include bp(tablet) {
+    gap: var(--spacing-md-plus);
+    padding: var(--spacing-lg);
+  }
+}
+
+.card--recommended {
+  --card-focus-ring: var(--focus-ring-inverse);
+
+  background: var(--bg-surface-accent-green);
+  color: var(--text-inverse);
+}
+
+.card--other {
+  background: var(--bg-surface-secondary);
+  color: var(--text-primary);
+  border: var(--border-subtle);
+}
+
+// 勾選框：整列 label 皆可點擊；44px 觸控區由 .check__box 往外延伸提供，
+// label 不設 min-height，避免單行名稱下方多出空白、與兩行名稱的間距不一致
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  cursor: pointer;
+
+  &:hover .check__name {
+    text-decoration: underline;
+    text-underline-offset: var(--spacing-xs);
+  }
+}
+
+.check__box {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  // 視覺上的框為 24px，44px 區域往外延伸；並與名稱第一行垂直置中（1lh = 名稱行高）
+  margin: calc((var(--icon-size-md) - var(--touch-target-min)) / 2);
+  margin-top: calc((1lh - var(--touch-target-min)) / 2);
+}
+
+.check__input {
+  appearance: none;
+  display: block;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  margin: 0;
+  border: var(--line-width-thick) solid currentColor;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+
+  &:checked {
+    background: currentColor;
+  }
+
+  &:focus-visible {
+    outline: var(--card-focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+}
+
+.check__mark {
+  position: absolute;
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  padding: var(--spacing-xs);
+  pointer-events: none;
+  visibility: hidden;
+
+  // 勾勾顏色與卡片底色相同，在實心框上「挖空」
+  .card--critical & {
+    color: var(--bg-surface-accent-red);
+  }
+
+  .card--recommended & {
+    color: var(--bg-surface-accent-green);
+  }
+
+  .card--other & {
+    color: var(--bg-surface-secondary);
+  }
+
+  .check__input:checked + & {
+    visibility: visible;
+  }
+}
+
+.check__name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+
+  .is-done & {
+    text-decoration: line-through;
+    text-decoration-thickness: var(--line-width-thick);
+  }
+}
+
+.details {
+  display: grid;
+  gap: var(--spacing-sm);
+  // 與名稱左緣對齊
+  padding-left: calc(var(--icon-size-md) + var(--spacing-md));
+}
+
+.note {
+  overflow-wrap: anywhere;
+
+  .card--other & {
+    color: var(--text-muted);
+  }
+}
+
+.due {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs) var(--spacing-sm);
+}
+
+.due__date,
+.due__left {
+  font-weight: var(--font-weight-regular);
+}
+
+// 30 天內：期限文字加粗
+.is-soon .due__date {
+  font-weight: var(--font-weight-bold);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: var(--line-width-thin) solid transparent;
+  border-radius: var(--radius-sm);
+
+  // 在紅／綠卡片上，狀態色可能與底色相同，加上框線區隔
+  .card--critical &,
+  .card--recommended & {
+    border-color: currentColor;
+  }
+}
+
+.pill--warn {
+  background: var(--status-warn-bg);
+  color: var(--status-warn-text);
+}
+
+.pill--done {
+  background: var(--status-done-bg);
+  color: var(--status-done-text);
+}
+
+.pill__icon {
+  width: var(--font-size-caption-caps-zh);
+  height: var(--font-size-caption-caps-zh);
+  flex-shrink: 0;
+}

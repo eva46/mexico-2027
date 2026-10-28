@@ -1,0 +1,131 @@
+@use 'breakpoints' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md-plus);
+}
+
+.grid,
+.stack {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--layout-gutter);
+
+  @include bp(tablet) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include bp(desktop) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-gutter);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  min-width: 0;
+  padding: var(--spacing-md);
+  background: var(--bg-surface-secondary);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+
+  @include bp(tablet) {
+    padding: var(--spacing-md-plus);
+  }
+}
+
+.swatch {
+  display: block;
+  height: var(--spacing-2xl);
+  border: var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+
+.swatch--dark {
+  background: var(--bg-surface-dark);
+  border: 0;
+}
+
+.swatch--plain {
+  border-radius: 0;
+}
+
+.name {
+  overflow-wrap: anywhere;
+  font-size: var(--font-size-caption-caps-zh);
+}
+
+.value {
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.bar {
+  display: block;
+  height: var(--spacing-md);
+  background: var(--progress-fill);
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.pill {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+.pill--done {
+  background: var(--status-done-bg);
+  color: var(--status-done-text);
+}
+
+.pill--warn {
+  background: var(--status-warn-bg);
+  color: var(--status-warn-text);
+}
+
+.pill--partial {
+  background: var(--status-partial-bg);
+  color: var(--status-partial-text);
+  border: var(--border-strong);
+}
+
+.pill--over {
+  background: var(--status-over-bg);
+  color: var(--status-over-text);
+}

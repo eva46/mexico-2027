@@ -1,0 +1,22 @@
+<section [class]="'section section--' + category().level" [attr.aria-labelledby]="headingId()">
+  <header class="header">
+    <h2 class="title" [id]="headingId()">
+      <span class="title__caption t-caption-caps">{{ caption() }}</span>
+      <span class="title__label t-heading-md t-zh">{{ category().label }}</span>
+    </h2>
+    <p class="count t-caption-caps t-zh">
+      已準備 {{ checkedCount() }} / {{ category().items.length }}
+    </p>
+  </header>
+  @if (category().items.length) {
+    <ul class="grid">
+      @for (item of category().items; track item.id) {
+        <li>
+          <app-packing-item [item]="item" [level]="category().level" />
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="empty t-zh">這個分類目前沒有物品。</p>
+  }
+</section>

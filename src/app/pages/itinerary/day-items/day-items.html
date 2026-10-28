@@ -1,0 +1,61 @@
+<section class="section" aria-labelledby="day-items-heading">
+  <h2 id="day-items-heading" class="heading t-caption-caps">Schedule</h2>
+  @if (items().length) {
+    <ol class="list">
+      @for (item of items(); track $index) {
+        <li class="item" [class.has-time]="item.time">
+          @if (item.time) {
+            <p class="item__time">{{ item.time }}</p>
+          }
+          <div class="item__body">
+            <h3 class="item__title t-heading-sm t-zh">{{ item.title }}</h3>
+            @if (item.location) {
+              <p class="item__location t-zh">
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z" />
+                  <path d="M12 7.5a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5z" />
+                </svg>
+                <span><span class="visually-hidden">地點：</span>{{ item.location }}</span>
+              </p>
+            }
+            @if (item.note) {
+              <p class="item__note t-zh">{{ item.note }}</p>
+            }
+            @if (item.mapUrl) {
+              <a class="item__map" [href]="item.mapUrl" target="_blank" rel="noopener">
+                地圖<span class="visually-hidden">：{{ item.title }}（另開新視窗）</span>
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M14 4h6v6" />
+                  <path d="M20 4l-9 9" />
+                  <path d="M18 14v6H4V6h6" />
+                </svg>
+              </a>
+            }
+          </div>
+        </li>
+      }
+    </ol>
+  } @else {
+    <p class="empty t-zh">這天尚未安排行程。</p>
+  }
+</section>

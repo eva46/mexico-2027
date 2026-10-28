@@ -1,0 +1,44 @@
+@use 'breakpoints' as *;
+
+:host {
+  display: grid;
+  gap: var(--spacing-xl);
+
+  @include bp(desktop) {
+    gap: var(--spacing-2xl);
+  }
+}
+
+.header {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.title {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.title__text {
+  overflow-wrap: anywhere;
+}
+
+.progress {
+  color: var(--text-muted);
+}
+
+.categories {
+  display: grid;
+  gap: var(--spacing-xl);
+
+  @include bp(desktop) {
+    gap: var(--spacing-2xl);
+  }
+}
+
+.error {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--status-warn-bg);
+  color: var(--status-warn-text);
+}

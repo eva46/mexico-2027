@@ -1,0 +1,124 @@
+@use 'breakpoints' as *;
+
+// DESIGN.md §1–§5。primitive 色只能在本檔被引用。
+:root {
+  color-scheme: light;
+
+  // ── Primitive ──
+  --color-white-cream: #f9f7f2;
+  --color-oatmeal: #e2d8c7;
+  --color-forest-green: #4b6634;
+  --color-brick-red: #b33e3d;
+  --color-espresso-black: #26201d;
+
+  // ── Background ──
+  --bg-page: var(--color-oatmeal);
+  --bg-surface-primary: var(--color-oatmeal);
+  --bg-surface-secondary: var(--color-white-cream);
+  --bg-surface-accent-green: var(--color-forest-green);
+  --bg-surface-accent-red: var(--color-brick-red);
+  --bg-surface-dark: var(--color-espresso-black);
+
+  // ── Text ──
+  --text-primary: var(--color-espresso-black);
+  --text-inverse: var(--color-white-cream);
+  --text-accent: var(--color-brick-red);
+  --text-muted: rgba(38, 32, 29, 0.72);
+
+  // ── Interactive ──
+  --btn-primary-bg: var(--color-brick-red);
+  --btn-primary-text: var(--color-white-cream);
+  --pill-active-bg: var(--color-brick-red);
+  --pill-active-text: var(--color-white-cream);
+  --pill-inactive-bg: transparent;
+  --focus-ring: var(--line-width-thick) solid var(--color-espresso-black);
+  --focus-ring-inverse: var(--line-width-thick) solid var(--color-white-cream);
+  --focus-ring-offset: 2px;
+
+  // ── Status ──
+  --status-done-bg: var(--color-forest-green);
+  --status-done-text: var(--color-white-cream);
+  --status-warn-bg: var(--color-brick-red);
+  --status-warn-text: var(--color-white-cream);
+  --status-partial-bg: var(--color-white-cream);
+  --status-partial-text: var(--color-espresso-black);
+  --status-over-bg: var(--color-espresso-black);
+  --status-over-text: var(--color-white-cream);
+  --progress-track: rgba(38, 32, 29, 0.12);
+  --progress-fill: var(--color-forest-green);
+  --progress-track-inverse: rgba(249, 247, 242, 0.24);
+  --progress-fill-inverse: var(--color-white-cream);
+
+  // ── Typography ──
+  --font-family-display: 'Anton', 'Noto Sans TC', 'Impact', sans-serif;
+  --font-family-body: 'Inter', 'Noto Sans TC', 'Helvetica Neue', sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  --font-size-display-xl: clamp(48px, 7vw + 20px, 96px);
+  --font-size-heading-md: clamp(20px, 1vw + 16px, 28px);
+  --font-size-heading-sm: clamp(16px, 0.5vw + 14px, 20px);
+  --font-size-body: clamp(14px, 0.25vw + 13px, 16px);
+  --font-size-caption-caps: 11px;
+  --font-size-caption-caps-zh: 12px;
+
+  --line-height-display-xl: 0.9;
+  --line-height-display-xl-zh: 1.05;
+  --line-height-heading-md: 1.1;
+  --line-height-heading-md-zh: 1.25;
+  --line-height-heading-sm: 1.2;
+  --line-height-heading-sm-zh: 1.35;
+  --line-height-body: 1.5;
+  --line-height-caption-caps: 1.2;
+
+  --letter-spacing-display: -0.02em;
+  --letter-spacing-caps: 0.05em;
+
+  // ── Spacing ──
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-md-plus: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  // ── Layout（依斷點變化）──
+  --layout-screen-padding: 20px;
+  --layout-gutter: 12px;
+  --layout-max-width: 1200px;
+  --layout-nav-height: 64px;
+  --touch-target-min: 44px;
+  --icon-size-md: 24px;
+
+  // ── Radius ──
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  // ── Elevation & Borders ──
+  --elevation-none: none;
+  --line-width-thin: 1px;
+  --line-width-thick: 2px;
+  --border-subtle: var(--line-width-thin) solid rgba(38, 32, 29, 0.12);
+  --border-strong: var(--line-width-thin) solid rgba(38, 32, 29, 0.2);
+  --border-subtle-inverse: var(--line-width-thin) solid rgba(249, 247, 242, 0.24);
+
+  // ── Motion ──
+  --motion-expand: 200ms ease-out;
+
+  // ── Layers ──
+  --z-nav: 100;
+
+  @include bp(tablet) {
+    --layout-screen-padding: 24px;
+    --layout-gutter: 16px;
+  }
+
+  @include bp(desktop) {
+    --layout-screen-padding: 32px;
+  }
+}

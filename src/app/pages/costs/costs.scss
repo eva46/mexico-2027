@@ -1,0 +1,64 @@
+@use 'breakpoints' as *;
+
+:host {
+  display: block;
+}
+
+// mobile／tablet：單欄 標題 → 總覽 → 成員列表
+.layout {
+  display: grid;
+  gap: var(--spacing-xl);
+
+  // desktop：總覽在左（sticky），成員列表在右
+  @include bp(desktop) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+    gap: var(--spacing-xl);
+  }
+}
+
+.aside {
+  display: grid;
+  gap: var(--spacing-lg);
+  min-width: 0;
+
+  @include bp(desktop) {
+    position: sticky;
+    // 頂部導覽列下方
+    top: calc(var(--layout-nav-height) + env(safe-area-inset-top) + var(--spacing-xl));
+  }
+}
+
+.main {
+  min-width: 0;
+}
+
+.title {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.title__text {
+  overflow-wrap: anywhere;
+}
+
+.members-title {
+  display: grid;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md-plus);
+}
+
+.members {
+  display: grid;
+  gap: var(--layout-gutter);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.error {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--status-warn-bg);
+  color: var(--status-warn-text);
+}

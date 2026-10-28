@@ -1,0 +1,111 @@
+@use 'breakpoints' as *;
+
+:host {
+  display: block;
+}
+
+.section {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.heading {
+  color: var(--text-muted);
+}
+
+.list,
+.empty {
+  margin: 0;
+  padding: 0 var(--spacing-md);
+  list-style: none;
+  background: var(--bg-surface-secondary);
+  border-radius: var(--radius-md);
+
+  @include bp(tablet) {
+    padding-inline: var(--spacing-md-plus);
+  }
+}
+
+.empty {
+  padding-block: var(--spacing-md);
+}
+
+.item {
+  display: grid;
+  gap: var(--spacing-sm) var(--spacing-md);
+  padding-block: var(--spacing-md);
+
+  & + & {
+    border-top: var(--border-subtle);
+  }
+
+  @include bp(tablet) {
+    column-gap: var(--spacing-lg);
+    padding-block: var(--spacing-md-plus);
+  }
+
+  // 有時間時：時間置左
+  &.has-time {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}
+
+.item__time {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-heading-md);
+  font-weight: var(--font-weight-black);
+  font-synthesis: none;
+  line-height: var(--line-height-heading-md);
+  font-variant-numeric: tabular-nums;
+}
+
+.item__body {
+  display: grid;
+  gap: var(--spacing-sm);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.item__location {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.item__note {
+  color: var(--text-muted);
+}
+
+.icon {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  flex-shrink: 0;
+}
+
+.item__location .icon {
+  // 對齊第一行文字
+  margin-top: calc((var(--font-size-body) * var(--line-height-body) - var(--icon-size-md)) / 2);
+}
+
+.item__map {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--spacing-xs);
+  min-height: var(--touch-target-min);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  text-underline-offset: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    text-decoration-thickness: var(--line-width-thick);
+  }
+
+  &:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+}

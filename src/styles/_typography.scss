@@ -1,0 +1,53 @@
+// DESIGN.md §2。預設為拉丁字的 line-height／字級；
+// 以中文為主的文字加上 `.t-zh` 改用放寬的 line-height 與 12px caption。
+
+.t-display-xl {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display-xl);
+  font-weight: var(--font-weight-black);
+  font-synthesis: none;
+  line-height: var(--line-height-display-xl);
+  letter-spacing: var(--letter-spacing-display);
+
+  &.t-zh {
+    line-height: var(--line-height-display-xl-zh);
+  }
+}
+
+.t-heading-md {
+  font-size: var(--font-size-heading-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading-md);
+
+  &.t-zh {
+    line-height: var(--line-height-heading-md-zh);
+  }
+}
+
+.t-heading-sm {
+  font-size: var(--font-size-heading-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading-sm);
+
+  &.t-zh {
+    line-height: var(--line-height-heading-sm-zh);
+  }
+}
+
+.t-body {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+}
+
+.t-caption-caps {
+  font-size: var(--font-size-caption-caps);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-caption-caps);
+  letter-spacing: var(--letter-spacing-caps);
+  text-transform: uppercase;
+
+  &.t-zh {
+    font-size: var(--font-size-caption-caps-zh);
+  }
+}

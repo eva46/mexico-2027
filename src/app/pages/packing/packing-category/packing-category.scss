@@ -1,0 +1,66 @@
+@use 'breakpoints' as *;
+
+:host {
+  display: block;
+}
+
+.section {
+  display: grid;
+  gap: var(--spacing-md);
+
+  @include bp(tablet) {
+    gap: var(--spacing-md-plus);
+  }
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--spacing-xs) var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: var(--border-subtle);
+}
+
+.title {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.title__caption,
+.count {
+  color: var(--text-muted);
+}
+
+// mobile 1 欄 → tablet 2 欄 → desktop 3 欄
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--layout-gutter);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include bp(tablet) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include bp(desktop) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+// 極度重要：卡片較大，desktop 維持 2 欄
+.section--critical .grid {
+  @include bp(desktop) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.empty {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-secondary);
+  color: var(--text-muted);
+}

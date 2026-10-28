@@ -1,0 +1,24 @@
+<section class="summary" aria-labelledby="costs-summary-heading">
+  <h2 class="visually-hidden" id="costs-summary-heading">繳費總覽</h2>
+
+  <div class="block">
+    <p class="label t-caption-caps t-zh">Per person・每人應繳</p>
+    <p class="amount amount--xl">
+      <span class="amount__unit">NT$</span>{{ amount(group().due) }}
+    </p>
+  </div>
+
+  <div class="block block--total">
+    <p class="label t-caption-caps t-zh">Total paid・全團已繳</p>
+    <p class="amount amount--md">
+      {{ group().totalPaid | twd }}
+      <span class="amount__of">/ {{ group().totalDue | twd }}</span>
+    </p>
+    <div class="bar" aria-hidden="true">
+      <span class="bar__fill" [style.inline-size.%]="percent()"></span>
+    </div>
+    <p class="meta t-caption-caps t-zh">
+      完成 {{ percent() }}%・已繳清 {{ group().settledCount }} / {{ group().memberCount }} 人
+    </p>
+  </div>
+</section>

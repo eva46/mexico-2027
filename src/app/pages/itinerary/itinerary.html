@@ -1,0 +1,18 @@
+@if (itinerary.isLoading()) {
+  <p class="t-zh">載入中…</p>
+} @else if (itinerary.error() || !currentDay()) {
+  <h1 class="visually-hidden">行程</h1>
+  <p class="error t-zh" role="alert">行程資料載入失敗，請稍後重新整理頁面。</p>
+} @else if (currentDay(); as day) {
+  <div class="layout">
+    <div class="aside">
+      <app-day-picker
+        [days]="days()"
+        [selected]="day.day"
+        (daySelect)="selectDay($event)"
+      />
+      <app-day-hero [day]="day" />
+    </div>
+    <app-day-items class="main" [items]="day.items" />
+  </div>
+}

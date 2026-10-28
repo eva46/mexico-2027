@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "level": "critical",
+      "label": "極度重要",
+      "items": [
+        { "id": "flight", "name": "國際機票（TPE ⇄ SJD 來回）", "deadline": "2026-12-20", "note": "個人自備。買官網連票，行李可直掛" },
+        { "id": "passport", "name": "護照", "deadline": "2027-02-20", "note": "個人自備。效期需 6 個月以上" },
+        { "id": "visa", "name": "美簽／ESTA 或墨西哥簽證", "deadline": "2027-02-20", "note": "個人自備。美簽 (B1/B2/ESTA 可轉機) 或墨簽；ESTA 務必提前在官網申請核准，機票買官網聯票" },
+        { "id": "insurance", "name": "潛水與旅平險", "deadline": "2027-04-20", "note": "個人自備。潛水可保富邦精彩人生（潛店含基礎責任險）；出海前需向潛店提供英文保單備查" }
+      ]
+    },
+    {
+      "level": "recommended",
+      "label": "建議攜帶",
+      "items": [
+        { "id": "wetsuit", "name": "5mm 防寒衣", "deadline": "2027-05-06", "note": "5 月科爾特斯海水溫約 21～23°C，連續 5 天每日出海 6 小時極易失溫，務必 5mm" },
+        { "id": "mask", "name": "面鏡", "deadline": "2027-05-06", "note": "" },
+        { "id": "fins", "name": "蛙鞋（長蛙）", "deadline": "2027-05-06", "note": "" },
+        { "id": "snorkel", "name": "呼吸管", "deadline": "2027-05-06", "note": "" },
+        { "id": "socks", "name": "襪套", "deadline": "2027-05-06", "note": "" },
+        { "id": "hood", "name": "潛水帽", "deadline": "2027-05-06", "note": "" },
+        { "id": "facekini", "name": "臉基尼", "deadline": "2027-05-06", "note": "" },
+        { "id": "poncho", "name": "毛巾衣", "deadline": "2027-05-06", "note": "" },
+        { "id": "buoy", "name": "浮標", "deadline": "2027-05-06", "note": "" },
+        { "id": "sunscreen", "name": "物理性防曬", "deadline": "2027-05-06", "note": "落水與蝠魟、虎鯨共游時禁用化學防曬。選擇不含氧苯酮 (Oxybenzone-free)、非奈米氧化鋅，保護海洋生態" },
+        { "id": "seasick-pills", "name": "暈船藥", "deadline": "2027-05-06", "note": "" }
+      ]
+    },
+    {
+      "level": "other",
+      "label": "其他",
+      "items": [
+        { "id": "dry-bag", "name": "防水袋", "deadline": "", "note": "" },
+        { "id": "action-cam", "name": "運動相機", "deadline": "", "note": "" },
+        { "id": "tip-cash", "name": "小費現金", "deadline": "", "note": "Day 7 給船長與導潛小費" },
+        { "id": "luggage-scale", "name": "行李秤", "deadline": "", "note": "回程前秤重，避免超重" },
+        { "id": "lodging", "name": "國外住宿（Aqua Ventana、Hotel Colli）", "deadline": "2026-12-20", "note": "統一處理" },
+        { "id": "dive-trip", "name": "潛水行程（Baja Ocean Extreme 5 天）", "deadline": "2026-12-20", "note": "統一處理" },
+        { "id": "transfer", "name": "當地包車（SJD ⇄ La Ventana）", "deadline": "2026-12-20", "note": "統一處理" }
+      ]
+    }
+  ]
+}

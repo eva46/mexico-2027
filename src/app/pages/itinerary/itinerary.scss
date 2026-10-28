@@ -1,0 +1,41 @@
+@use 'breakpoints' as *;
+
+:host {
+  display: block;
+}
+
+// mobile／tablet：單欄 日期選單 → Hero → 項目列表
+.layout {
+  display: grid;
+  gap: var(--spacing-lg);
+
+  // desktop：左側 Hero＋日期選單（sticky），右側項目列表
+  @include bp(desktop) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+    gap: var(--spacing-xl);
+  }
+}
+
+.aside {
+  display: grid;
+  gap: var(--spacing-md);
+  min-width: 0;
+
+  @include bp(desktop) {
+    position: sticky;
+    // 頂部導覽列下方
+    top: calc(var(--layout-nav-height) + env(safe-area-inset-top) + var(--spacing-xl));
+  }
+}
+
+.main {
+  min-width: 0;
+}
+
+.error {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--status-warn-bg);
+  color: var(--status-warn-text);
+}
