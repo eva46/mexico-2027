@@ -1,0 +1,7 @@
+name = "mexico-2027-ai"
+main = "ai-proxy.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+# 允許呼叫的網站來源（逗號分隔）；部署前改成你的 GitHub Pages 網域
+ALLOWED_ORIGINS = "https://eva46.github.io,http://localhost:4200"

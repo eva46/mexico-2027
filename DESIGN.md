@@ -6,7 +6,7 @@
 
 - 雜誌編輯式排版：超大窄黑體標題 + 理性的幾何無襯線內文，強烈對比
 - 大地與復古工藝色調（Earth & Heritage Palette）
-- **扁平色塊**：不使用投影、漸層、發光；層級完全靠色塊明暗差、網格切割與細線
+- **扁平色塊**：不使用投影、漸層、發光；層級完全靠色塊明暗差、網格切割與細線（唯一例外：AI 助理的浮動按鈕與對話框，見 §4）
 - 排版密集但結構嚴整，對齊網格
 - 單一淺色主題（`color-scheme: light`），不做深色模式
 
@@ -66,6 +66,13 @@
 | `progress-track-inverse` | `rgba(249, 247, 242, 0.24)` | 深色底（費用總覽）上的進度條底（本專案新增） |
 | `progress-fill-inverse` | `color-white-cream` | 深色底上的進度條填色（本專案新增；forest-green 在 espresso 上對比不足 3:1） |
 
+**Chat（本專案新增，AI 助理對話框使用）**
+| Token | 對應 | 用途 |
+|---|---|---|
+| `chat-bubble-user-bg` / `-text` | `color-brick-red` / `color-white-cream` | 使用者送出的訊息 |
+| `chat-bubble-ai-bg` / `-text` | `color-oatmeal` / `color-espresso-black` | AI 回覆 |
+| `fab-bg` / `fab-text` | `color-espresso-black` / `color-white-cream` | 右下角浮動按鈕 |
+
 ### 1.1 對比度檢查結果（WCAG AA：一般文字 ≥ 4.5，大字 ≥ 3）
 
 | 組合 | 對比 | 結論 |
@@ -115,6 +122,7 @@
 | `font-size-heading-sm` | `clamp(16px, 0.5vw + 14px, 20px)` | 1.2（中文 1.35） | 700 | |
 | `font-size-body` | `clamp(14px, 0.25vw + 13px, 16px)` | 1.5 | 400 | |
 | `font-size-caption-caps` | 拉丁 `11px`；中文 `12px` | 1.2 | 700 | `uppercase`，`letter-spacing: 0.05em` |
+| `font-size-input` | `16px` | 1.5 | 400 | 文字輸入框專用（本專案新增；小於 16px 時 iOS 聚焦會自動放大畫面） |
 
 與原設計的差異與原因：
 - body 原為 13～14px，因主要內容是中文，下限設為 14px，桌機放大到 16px
@@ -154,6 +162,10 @@
 | `touch-target-min` | 44px | 44px | 44px（本專案新增；可點擊區域最小尺寸） |
 | `icon-size-md` | 24px | 24px | 24px（本專案新增；導覽列等線條圖示） |
 | `z-nav` | 100 | 100 | 100（本專案新增；導覽列層級） |
+| `z-fab` | 110 | 110 | 110（本專案新增；AI 浮動按鈕與對話框，需高於導覽列） |
+| `fab-size` | 56px | 56px | 56px（本專案新增；AI 浮動按鈕直徑） |
+| `chat-panel-width` | 100%（左右各留 `spacing-md`） | 380px | 400px（本專案新增；AI 對話框寬度） |
+| `chat-panel-height` | `min(70dvh, 560px)` | `min(70dvh, 560px)` | `min(70dvh, 560px)`（本專案新增；AI 對話框高度） |
 
 ### Border Radius
 | Token | 值 | 用途 |
@@ -169,7 +181,9 @@
 
 | Token | 值 | 用途 |
 |---|---|---|
-| `elevation-none` | `box-shadow: none` | **全站唯一允許的陰影值** |
+| `elevation-none` | `box-shadow: none` | 全站預設；除下兩列外不得使用其他陰影 |
+| `elevation-fab` | `0 4px 12px rgba(38, 32, 29, 0.32)` | **例外**：僅限 AI 浮動按鈕（本專案新增） |
+| `elevation-panel` | `0 12px 32px rgba(38, 32, 29, 0.24)` | **例外**：僅限 AI 對話框（本專案新增） |
 | `border-subtle` | `1px solid rgba(38, 32, 29, 0.12)` | 規格線、欄位分隔線 |
 | `border-strong` | `1px solid rgba(38, 32, 29, 0.2)` | Pill 外框、浮動面板外框（本專案新增） |
 | `border-subtle-inverse` | `1px solid rgba(249, 247, 242, 0.24)` | 深色底（費用總覽）上的分隔線（本專案新增） |
@@ -216,6 +230,8 @@ SCSS 以 mixin 寫斷點：`@include bp(tablet) { … }`，只用 `min-width`。
 | 費用總覽 | `bg-surface-dark` 區塊，金額用 display 字型 |
 | 成員列 | `bg-surface-secondary`、`radius-md`；暱稱 heading-sm、金額 body、狀態用對應 status pill；明細列以 `border-subtle` 分隔 |
 | 按鈕（若有） | `btn-primary-*`、`radius-lg` |
+| AI 浮動按鈕 | 右下角固定、`fab-bg`／`fab-text`、`radius-full`、`elevation-fab`，文字「AI」；手機位於底部導覽列上方 |
+| AI 對話框 | `bg-surface-secondary`、`radius-md`、`elevation-panel`；使用者訊息 `chat-bubble-user-*` 靠右，AI 回覆 `chat-bubble-ai-*` 靠左；關閉即清空紀錄 |
 
 ---
 

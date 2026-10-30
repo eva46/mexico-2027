@@ -49,6 +49,14 @@
   --progress-track-inverse: rgba(249, 247, 242, 0.24);
   --progress-fill-inverse: var(--color-white-cream);
 
+  // ── Chat ──
+  --chat-bubble-user-bg: var(--color-brick-red);
+  --chat-bubble-user-text: var(--color-white-cream);
+  --chat-bubble-ai-bg: var(--color-oatmeal);
+  --chat-bubble-ai-text: var(--color-espresso-black);
+  --fab-bg: var(--color-espresso-black);
+  --fab-text: var(--color-white-cream);
+
   // ── Typography ──
   --font-family-display: 'Anton', 'Noto Sans TC', 'Impact', sans-serif;
   --font-family-body: 'Inter', 'Noto Sans TC', 'Helvetica Neue', sans-serif;
@@ -63,6 +71,7 @@
   --font-size-body: clamp(14px, 0.25vw + 13px, 16px);
   --font-size-caption-caps: 11px;
   --font-size-caption-caps-zh: 12px;
+  --font-size-input: 16px;
 
   --line-height-display-xl: 0.9;
   --line-height-display-xl-zh: 1.05;
@@ -92,6 +101,9 @@
   --layout-nav-height: 64px;
   --touch-target-min: 44px;
   --icon-size-md: 24px;
+  --fab-size: 56px;
+  --chat-panel-width: 100%;
+  --chat-panel-height: min(70dvh, 560px);
 
   // ── Radius ──
   --radius-sm: 8px;
@@ -101,6 +113,9 @@
 
   // ── Elevation & Borders ──
   --elevation-none: none;
+  // 例外：僅限 AI 浮動按鈕與對話框（DESIGN.md §4）
+  --elevation-fab: 0 4px 12px rgba(38, 32, 29, 0.32);
+  --elevation-panel: 0 12px 32px rgba(38, 32, 29, 0.24);
   --line-width-thin: 1px;
   --line-width-thick: 2px;
   --border-subtle: var(--line-width-thin) solid rgba(38, 32, 29, 0.12);
@@ -112,13 +127,16 @@
 
   // ── Layers ──
   --z-nav: 100;
+  --z-fab: 110;
 
   @include bp(tablet) {
     --layout-screen-padding: 24px;
     --layout-gutter: 16px;
+    --chat-panel-width: 380px;
   }
 
   @include bp(desktop) {
     --layout-screen-padding: 32px;
+    --chat-panel-width: 400px;
   }
 }

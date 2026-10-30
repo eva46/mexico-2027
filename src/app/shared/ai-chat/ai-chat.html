@@ -1,0 +1,108 @@
+@if (open()) {
+  <section class="panel" id="ai-chat-panel" role="dialog" aria-labelledby="ai-chat-title">
+    <header class="panel__header">
+      <h2 class="panel__title" id="ai-chat-title">
+        <span class="t-caption-caps">AI Assistant</span>
+        <span class="t-heading-sm t-zh">旅遊小幫手</span>
+      </h2>
+      <button type="button" class="close" (click)="close()" aria-label="關閉並清空對話">
+        <svg
+          class="close__icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="log" #log role="log" aria-label="對話紀錄">
+      <p class="bubble bubble--ai t-zh">
+        Hola！我是 MEXICO 2027 旅遊小幫手 <span aria-hidden="true">🌵</span><br />
+        可以問我行程、攜帶物品、團費，也可以請我上網查附近餐廳、天氣或交通。
+      </p>
+
+      @if (!configured) {
+        <p class="bubble bubble--ai t-zh">AI 助理尚未設定完成，暫時無法提問。</p>
+      } @else if (!messages().length) {
+        <ul class="suggestions" aria-label="建議問題">
+          @for (s of suggestions; track s) {
+            <li>
+              <button type="button" class="chip t-zh" (click)="send(s)">{{ s }}</button>
+            </li>
+          }
+        </ul>
+      }
+
+      @for (m of messages(); track m.id) {
+        <p class="bubble t-zh" [class.bubble--user]="m.role === 'user'" [class.bubble--ai]="m.role === 'assistant'">
+          <span class="visually-hidden">{{ m.role === 'user' ? '你說：' : '小幫手：' }}</span>
+          @for (seg of m.segments; track $index) {
+            @if (seg.href) {
+              <a [href]="seg.href" target="_blank" rel="noopener">{{ seg.text }}</a>
+            } @else {
+              {{ seg.text }}
+            }
+          }
+        </p>
+      }
+
+      @if (pending()) {
+        <p class="bubble bubble--ai bubble--pending t-zh">思考中，需要上網查詢時會久一點…</p>
+      }
+      @if (error()) {
+        <p class="bubble bubble--error t-zh" role="alert">抱歉，小幫手暫時無法回覆，請稍後再試一次。</p>
+      }
+    </div>
+
+    <form class="composer" (submit)="$event.preventDefault(); send()">
+      <label class="visually-hidden" for="ai-chat-input">輸入問題</label>
+      <textarea
+        #input
+        id="ai-chat-input"
+        class="composer__input t-zh"
+        rows="1"
+        placeholder="問我行程或請我上網查，例如：今天幾點出發？"
+        [formField]="chatForm.question"
+        (keydown.enter)="onEnter($event)"
+      ></textarea>
+      <button
+        type="submit"
+        class="send"
+        [disabled]="pending() || !configured || !chatForm.question().value().trim()"
+        aria-label="送出"
+      >
+        <svg
+          class="send__icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </button>
+    </form>
+  </section>
+}
+
+<button
+  #fab
+  type="button"
+  class="fab"
+  [attr.aria-expanded]="open()"
+  aria-controls="ai-chat-panel"
+  [attr.aria-label]="open() ? '關閉 AI 旅遊小幫手' : '開啟 AI 旅遊小幫手'"
+  (click)="toggle()"
+>
+  AI
+</button>
